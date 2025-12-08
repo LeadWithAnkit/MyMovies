@@ -23,8 +23,8 @@ const App = () => {
       console.log("Logged Out");
       navigate('/login');
      }
-    })
-  })
+    });
+  }, []);
   return (
     <div>
       <ToastContainer theme='dark'/>

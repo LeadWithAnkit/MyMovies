@@ -12,26 +12,39 @@ const Navbar = () => {
   const navRef = useRef();
   
   //useeffect having function to darken navbar on scroll
-  useEffect(()=>{
-    window.addEventListener('scroll',()=>{
-      if(window.scrollY >=80){
-        navRef.current.classList.add('nav-dark')
+useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 80) {
+        navRef.current.classList.add("nav-dark");
+      } else {
+        navRef.current.classList.remove("nav-dark");
       }
-      else{ 
-        navRef.current.classList.remove('nav-dark')
-      }
-    })
-  },[])
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+    }, []);
+    
+    const scrollToCards = () => {
+    document.getElementById("more-cards")?.scrollIntoView({
+      behavior: "smooth",
+      });
+     };
+
   return (
     <div ref={navRef} className='navbar'>
       <div className="navbar-left">
         <img src={logo} alt="" />
         <ul>
-          <li>Home</li>
-          <li>TV Show</li>
-          <li>Movies</li>
-          <li>New & Popular</li>
-          <li>Browse by Languages</li>
+          <ul>
+            <li onClick={scrollToCards}>Home</li>
+            <li onClick={scrollToCards}>TV Show</li>
+            <li onClick={scrollToCards}>Movies</li>
+            <li onClick={scrollToCards}>New & Popular</li>
+          </ul>
         </ul>
       </div>
       <div className="navbar-right">
