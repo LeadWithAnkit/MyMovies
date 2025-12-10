@@ -18,7 +18,10 @@ const Home = ({}) => {
             <img src={hero_title} alt="" className='caption-img' />
             <p>Discovering his ties to a secret ancient order, a young man living in modern Istanbul embarks on a quest to save the city from a immortal enemy</p>
             <div className="hero-btns">
-              <button className='btn'><img src={play_icon} alt="Play" /> Play</button>
+             <button className="btn"
+              onClick={() => window.open("https://youtu.be/80dqOwAOhbo?si=Wn51JWg1zcwZgTYW", "_blank")}>
+              <img src={play_icon} alt="Play" /> Play
+             </button>
               <button className='btn dark-btn'><img src={info_icon} alt="Info" />More Info</button>
             </div>
             <TitleCards />
